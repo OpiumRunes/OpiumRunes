@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rune Opiums Gallery</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    .header {
+        text-align: center;
+        padding: 20px;
+    }
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+    .gallery img {
+        width: 100%;
+        height: auto;
+        display: block;
+        cursor: pointer;
+    }
+    input[type="number"] {
+        margin: 20px auto;
+        display: block;
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+    <div class="header">
+        <h1>Rune Opiums</h1>
+        <input type="number" id="imageSearch" placeholder="Enter Opium number (1-777)" min="1" max="777">
+    </div>
+    <div class="gallery">
+        <!-- Images will be inserted here -->
+        <script>
+            const gallery = document.querySelector('.gallery');
+            for (let i = 1; i <= 777; i++) {
+                const img = document.createElement('img');
+                img.src = `./hq/${i}.png`; // High-quality images from the 'crushed' folder
+                img.alt = `Opium #${i}`; // Accessibility text
+                img.title = `Opium #${i}`; // Tooltip text
+                img.id = `opium${i}`; // Add ID for each image
+                img.setAttribute("data-webp", `https://github.com/OpiumRunes/OpiumRunes/raw/main/webp/${i}.webp`);
+
+                img.addEventListener('click', function() {
+                    const path = this.getAttribute('data-webp');
+                    const link = document.createElement('a');
+                    link.href = path;
+                    link.download = path.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+
+                gallery.appendChild(img);
+            }
+
+            // Script for the search functionality
+            document.getElementById('imageSearch').addEventListener('input', function() {
+                const number = this.value;
+                const imageToFind = document.getElementById(`opium${number}`);
+                if(imageToFind) {
+                    imageToFind.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
