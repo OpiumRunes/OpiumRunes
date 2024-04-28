@@ -37,6 +37,12 @@
         border: none;
         border-radius: 5px;
     }
+    .copyright {
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: white;
+    }
 </style>
 </head>
 <body>
@@ -50,7 +56,7 @@
             const gallery = document.querySelector('.gallery');
             for (let i = 1; i <= 777; i++) {
                 const img = document.createElement('img');
-                img.src = `./hq/${i}.png`; // High-quality images from the 'crushed' folder
+                img.src = `./hq/${i}.png`; // High-quality images from the 'hq' folder
                 img.alt = `Opium #${i}`; // Accessibility text
                 img.title = `Opium #${i}`; // Tooltip text
                 img.id = `opium${i}`; // Add ID for each image
@@ -78,6 +84,13 @@
                 }
             });
         </script>
+    </div>
+    <div class="copyright">
+        <p>
+            Viral Public License<br>
+            Copyleft (ɔ) All Rights Reversed<br><br>
+            This WORK is hereby relinquished of all associated ownership, attribution, and copyrights, and redistribution or use of any kind, with or without modification, is permitted without restriction subject to the following conditions: Redistributions of this WORK or ANY work that makes use of ANY of the contents of this WORK by ANY kind of copying, dependency, linkage, or ANY other possible form of DERIVATION or COMBINATION, must retain the ENTIRETY of this license. No further restrictions of ANY kind may be applied.
+        </p>
     </div>
 </body>
 </html>
